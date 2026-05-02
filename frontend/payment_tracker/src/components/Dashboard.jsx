@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import AddPayment from "./AddPayment";
 import PaymentList from "./PaymentList";
 import Logout from "./Logout";
+import styles from "./Dashboard.module.css";
 
 function Dashboard() {
     const [payments, setPayments] = useState([]);
@@ -36,11 +37,21 @@ function Dashboard() {
 
     return (
         <div>
-            <h1>Dashboard</h1>
+            <h1 className={styles.dashboard_header}>Dashboard</h1>
             <Logout />
-            <p>Monthly total: ${monthlyTotal.toFixed(2)}</p>
-            <p>Yearly total: ${yearlyTotal.toFixed(2)}</p>
+            <div className={styles.totals_section}>
+                <div className={styles.total_container}>
+                    <h3 className={styles.total_title}>Monthly total:</h3>
+                    <p className={styles.total_value}>${monthlyTotal.toFixed(2)}</p>
+                </div>
+                <div className={styles.total_container}>
+                    <h3 className={styles.total_title}>Yearly total:</h3>
+                    <p className={styles.total_value}>${yearlyTotal.toFixed(2)}</p>
+                </div>
+            </div>
+            <hr className={styles.dashboard_divider}></hr>
             <AddPayment onPaymentAdded={fetchPayments} />
+            <hr className={styles.dashboard_divider}></hr>
             <PaymentList payments={payments} onPaymentDeleted={fetchPayments} onPaymentUpdated={fetchPayments} />
         </div>
     )

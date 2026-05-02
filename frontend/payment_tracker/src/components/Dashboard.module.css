@@ -1,0 +1,24 @@
+.totals_section {
+    display: flex;
+    justify-content: space-evenly;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    margin: 2rem;
+    background-color: var(--social-bg);
+}
+
+.dashboard_divider {
+    border: 2px solid var(--border);
+    margin: 2rem;
+}
+
+.total_container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 2rem;
+}
+
+.total_value {
+    scale: 120%;
+}

@@ -1,0 +1,33 @@
+.container {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem;
+    background-color: var(--code-bg);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.payment_form_header {
+    font-weight: bold;
+}
+
+.payment_form {
+    display: flex;
+}
+
+.form_input {
+    border: transparent;
+    border-radius: 2px;
+    border-bottom: 2px solid var(--border);
+}
+
+.submit_button {
+    border: 1px solid var(--text);
+    border-radius: 4px;
+}
+
+.submit_button:hover {
+    transition: background-color 0.2s;
+}

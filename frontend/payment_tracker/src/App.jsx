@@ -3,13 +3,14 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from './components/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
+import styles from './App.module.css';
 
 function Home() {
   const navigate = useNavigate();
 
   return (
     <div>
-      <h1>Payment Tracker</h1>
+      <h1>Sam's Payment Tracker</h1>
       <div>
         <p>Click here to log in:</p>
         <button onClick={() => navigate("/login")}>Login</button>
@@ -26,11 +27,19 @@ function App() {
   return (
 
     <BrowserRouter>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
-        <Link to="/dashboard">Dashboard</Link>
+      <nav className={styles.navBar}>
+        <div className={styles.navItem}>
+          <Link to="/">Home</Link>
+        </div>
+        <div className={styles.navItem}>
+          <Link to="/login">Login</Link>
+        </div>
+        <div className={styles.navItem}>
+          <Link to="/register">Register</Link>
+        </div>
+        <div className={styles.navItem}>
+          <Link to="/dashboard">Dashboard</Link>
+        </div>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
