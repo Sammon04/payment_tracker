@@ -17,6 +17,12 @@
     align-items: center;
 }
 
+.editInput {
+    border: transparent;
+    border-radius: 2px;
+    border-bottom: 2px solid var(--border);
+}
+
 .actions {
     display: flex;
     gap: 0.5rem;
@@ -28,24 +34,20 @@
     font-weight: bold;
 }
 
-.editButton {
+.editButton, .saveButton, .cancelButton {
     border: 1px solid var(--text);
     border-radius: 4px;
     padding: 0.5rem 1rem;
 }
 
-.deleteButton {
+.deleteButton, .cancelButton {
     border: 1px solid var(--text);
     border-radius: 4px;
     padding: 0.5rem 1rem;
     color: rgb(220, 50, 50);
 }
 
-.editButton:hover {
-    transition: background-color 0.2s;
-}
-
-.deleteButton:hover {
+.editButton:hover, .deleteButton:hover, .saveButton:hover, .cancelButton:hover {
     transition: background-color 0.2s;
 }
 

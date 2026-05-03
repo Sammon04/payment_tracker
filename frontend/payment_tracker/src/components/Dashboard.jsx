@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import AddPayment from "./AddPayment";
 import PaymentList from "./PaymentList";
-import Logout from "./Logout";
 import styles from "./Dashboard.module.css";
 
 function Dashboard() {
@@ -38,7 +37,6 @@ function Dashboard() {
     return (
         <div>
             <h1 className={styles.dashboard_header}>Dashboard</h1>
-            <Logout />
             <div className={styles.totals_section}>
                 <div className={styles.total_container}>
                     <h3 className={styles.total_title}>Monthly total:</h3>

@@ -106,8 +106,6 @@ function AddPayment( { onPaymentAdded }) {
                     </div>
 
                 )}
-
-
                 <button 
                     className={styles.submit_button}
                     type="submit">Add Payment</button>

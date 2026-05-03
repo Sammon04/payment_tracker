@@ -60,40 +60,70 @@ function PaymentItem( { payment, onPaymentDeleted, onPaymentUpdated } ) {
 
     if (editing) {
         return (
-            <div>
-                <input
-                    type="text"
-                    placeholder="Payment Name"
-                    value = {paymentName}
-                    onChange={e => setPaymentName(e.target.value)}
-                />
-                <input
-                    type="number"
-                    placeholder="Payment Amount"
-                    value = {amount}
-                    onChange={e => setAmount(e.target.value)}
-                />
-                <input
-                    type="date"
-                    placeholder="Next Payment Date"
-                    value = {renewDate}
-                    onChange={e => setRenewDate(e.target.value)}
-                />
-                <select value={renewType} onChange={e => setRenewType(e.target.value)}>
-                    <option value="yearly">Yearly</option>
-                    <option value="monthly">Monthly</option>
-                    <option value="fixed">Fixed (days)</option>
-                </select>
-                {renewType === 'fixed' && (
+            <div className={styles.container}>
+                <div className={styles.editItem}>
+                    <label for="editPaymentName">Payment Name:</label>
                     <input
+                        className={styles.editInput}
+                        id="editPaymentName"
+                        type="text"
+                        placeholder="Payment Name"
+                        value = {paymentName}
+                        onChange={e => setPaymentName(e.target.value)}
+                    />                    
+                </div>
+                <div className={styles.editItem}>
+                    <label for="editPaymentAmount">Payment Amount:</label>
+                    <input
+                        className={styles.editInput}
+                        id="editPaymentAmount"
                         type="number"
-                        placeholder="Payment Frequency"
-                        value = {frequency}
-                        onChange={e => setFrequency(e.target.value)}
-                    />
+                        placeholder="Payment Amount"
+                        value = {amount}
+                        onChange={e => setAmount(e.target.value)}
+                    />                    
+                </div>
+                <div className={styles.editItem}>
+                    <label for="editRenewType">Renewal Type:</label>
+                    <select
+                        className={styles.editInput}
+                        id="editRenewType"
+                        value={renewType}
+                        onChange={e => setRenewType(e.target.value)}>
+                        <option value="yearly">Yearly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="fixed">Fixed (days)</option>
+                    </select>                    
+                </div>
+                <div className={styles.editItem}>
+                    <label for="editPaymentDate">Payment Date:</label>
+                    <input
+                        className={styles.editInput}
+                        id="editPaymentDate"
+                        type="date"
+                        placeholder="Next Payment Date"
+                        value = {renewDate}
+                        onChange={e => setRenewDate(e.target.value)}
+                    />                        
+                </div>
+                {renewType === 'fixed' && (
+                    <div className={styles.editItem}>
+                        <label for="editPaymentFrequency">Frequency:</label>
+                        <input
+                            className={styles.editInput}
+                            id="editPaymentFrequency"
+                            type="number"
+                            placeholder="Payment Frequency"
+                            value = {frequency}
+                            onChange={e => setFrequency(e.target.value)}
+                        />                        
+                    </div>
+
                 )}
-                <button onClick={handleSubmit}>Save</button>
-                <button onClick={handleCancel}>Cancel</button>
+                <div className={styles.actions}>
+                    <button className={styles.saveButton} onClick={handleSubmit}>Save</button>
+                    <button className={styles.cancelButton} onClick={handleCancel}>Cancel</button>                    
+                </div>
             </div>
         );
     }

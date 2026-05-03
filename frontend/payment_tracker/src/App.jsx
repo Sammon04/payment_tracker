@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useNavigate, Link } from "react-router-dom";
 import Login from "./components/Login";
+import Logout from "./components/Logout";
 import Register from "./components/Register";
 import Dashboard from './components/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -28,17 +29,22 @@ function App() {
 
     <BrowserRouter>
       <nav className={styles.navBar}>
-        <div className={styles.navItem}>
-          <Link to="/">Home</Link>
+        <div className={styles.navLinksSection}>
+          <div className={styles.navItem}>
+            <Link className={styles.navLink} to="/">Home</Link>
+          </div>
+          <div className={styles.navItem}>
+            <Link className={styles.navLink} to="/login">Login</Link>
+          </div>
+          <div className={styles.navItem}>
+            <Link className={styles.navLink} to="/register">Register</Link>
+          </div>
+          <div className={styles.navItem}>
+            <Link className={styles.navLink} to="/dashboard">Dashboard</Link>
+          </div>
         </div>
-        <div className={styles.navItem}>
-          <Link to="/login">Login</Link>
-        </div>
-        <div className={styles.navItem}>
-          <Link to="/register">Register</Link>
-        </div>
-        <div className={styles.navItem}>
-          <Link to="/dashboard">Dashboard</Link>
+        <div className={styles.logoutContainer}>
+          <Logout />
         </div>
       </nav>
       <Routes>
