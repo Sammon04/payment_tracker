@@ -18,12 +18,12 @@ try {
 
     while ($payment = $result->fetch_assoc()) {
 
-        $next_date = calculateNextDate($payment['renew_date'], $payment['renew_type'], $payment['frequency']);
-        $new_total = $payment['total_paid'] + $payment['amount'];
-
-        while ($next_date <= $today) {
-            $next_date = calculateNextDate($next_date, $payment['renew_type'], $payment['frequency']);
-            $new_total += $payment['amount'];
+        try {
+            $new_date_total = catchUpDate($payment['renew_date'], $payment['renew_type'], $payment['frequency'], $payment['amount']);
+            $new_renew_date = $new_date_total['renew_date'];
+            $new_total_paid = $new_date_total['total_paid'];        
+        } catch (Exception $e) {
+            send_response(['error' => 'Date calculation error'], 500);
         }
 
         $updateSql = "UPDATE payment 
@@ -31,7 +31,7 @@ try {
                     WHERE payment_id = ?";
         
         $update = $db->prepare($updateSql);
-        $update->bind_param('sdi', $next_date, $new_total, $payment['payment_id']);
+        $update->bind_param('sdi', $new_renew_date, $new_total_paid, $payment['payment_id']);
         $update->execute();
     }
 } catch (Exception $e) {
@@ -39,21 +39,3 @@ try {
 }
 
 echo "Done. " . $result->num_rows . " payment(s) updated.";
-
-function calculateNextDate($payment_date, $renew_type, $frequency) {
-    $date = new DateTime($payment_date);
-
-    switch ($renew_type) {
-        case 'yearly':
-            $date->modify('+1 year');
-            break;
-        case 'monthly':
-            $date->modify('+1 month');
-            break;
-        case 'fixed':
-            $date->modify('+' . $frequency . ' days');
-            break;
-    }
-
-    return $date->format('Y-m-d');
-}

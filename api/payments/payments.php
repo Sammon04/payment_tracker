@@ -75,7 +75,7 @@ switch ($_SERVER['REQUEST_METHOD']){
         }
 
         try {
-            $calculated_info = calculateFromStartDate($renew_date, $renew_type, $frequency, $amount);
+            $calculated_info = catchUpDate($renew_date, $renew_type, $frequency, $amount);
             $renew_date = $calculated_info['renew_date'];
             $total_paid = $calculated_info['total_paid'];            
         } catch (Exception $e) {
@@ -131,13 +131,12 @@ switch ($_SERVER['REQUEST_METHOD']){
         }
 
         try {
-            $calculated_info = calculateFromStartDate($renew_date, $renew_type, $frequency, $amount);
+            $calculated_info = catchUpDate($renew_date, $renew_type, $frequency, $amount);
             $renew_date = $calculated_info['renew_date'];
             $total_paid = $calculated_info['total_paid'];            
         } catch (Exception $e) {
             send_response(['error' => 'Date calculation error'], 500);
         }
-
 
         try {
 

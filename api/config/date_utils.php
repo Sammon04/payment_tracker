@@ -18,7 +18,7 @@ function calculateNextDate($date, $renew_type, $frequency) {
     return $d->format('Y-m-d');
 }
 
-function calculateFromStartDate($start_date, $renew_type, $frequency, $amount) {
+function catchUpDate($start_date, $renew_type, $frequency, $amount) {
     $today = date('Y-m-d');
     $next_date = $start_date;
     $total_paid = 0;

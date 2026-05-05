@@ -48,7 +48,7 @@ function AddPayment( { onPaymentAdded }) {
             <h2 className={styles.payment_form_header}>Add Payment</h2>
             <form className={styles.payment_form} onSubmit={handleSubmit}>
                 <div className={styles.form_item}>
-                    <label for="paymentName">Payment Name:</label>
+                    <label htmlFor="paymentName">Payment Name:</label>
                     <input
                         className={styles.form_input}
                         id="paymentName"
@@ -59,7 +59,7 @@ function AddPayment( { onPaymentAdded }) {
                     />
                 </div>
                 <div className={styles.form_item}>
-                    <label for="paymentAmount">Payment Amount:</label>
+                    <label htmlFor="paymentAmount">Payment Amount:</label>
                     <input
                         className={styles.form_input}
                         id="paymentAmount"
@@ -70,7 +70,7 @@ function AddPayment( { onPaymentAdded }) {
                     />                    
                 </div>
                 <div className={styles.form_item}>
-                    <label for="renewType">Renewal Type:</label>
+                    <label htmlFor="renewType">Renewal Type:</label>
                     <select 
                         className={styles.form_input}
                         id="renewType"
@@ -82,7 +82,7 @@ function AddPayment( { onPaymentAdded }) {
                     </select>                     
                 </div>
                 <div className={styles.form_item}>
-                    <label for="paymentDate">Payment Date:</label>              
+                    <label htmlFor="paymentDate">Start Date:</label>              
                     <input
                         className={styles.form_input}
                         id="paymentDate"
@@ -94,7 +94,7 @@ function AddPayment( { onPaymentAdded }) {
                 </div>
                 {renewType === 'fixed' && (
                     <div className={styles.form_item}>
-                        <label for="paymentFrequency">Payment Frequency:</label>
+                        <label htmlFor="paymentFrequency">Payment Frequency:</label>
                         <input
                             className={styles.form_input}
                             id="paymentFrequency"

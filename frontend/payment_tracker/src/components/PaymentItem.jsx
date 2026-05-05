@@ -62,7 +62,7 @@ function PaymentItem( { payment, onPaymentDeleted, onPaymentUpdated } ) {
         return (
             <div className={styles.container}>
                 <div className={styles.editItem}>
-                    <label for="editPaymentName">Payment Name:</label>
+                    <label htmlFor="editPaymentName">Payment Name:</label>
                     <input
                         className={styles.editInput}
                         id="editPaymentName"
@@ -73,7 +73,7 @@ function PaymentItem( { payment, onPaymentDeleted, onPaymentUpdated } ) {
                     />                    
                 </div>
                 <div className={styles.editItem}>
-                    <label for="editPaymentAmount">Payment Amount:</label>
+                    <label htmlFor="editPaymentAmount">Payment Amount:</label>
                     <input
                         className={styles.editInput}
                         id="editPaymentAmount"
@@ -84,7 +84,7 @@ function PaymentItem( { payment, onPaymentDeleted, onPaymentUpdated } ) {
                     />                    
                 </div>
                 <div className={styles.editItem}>
-                    <label for="editRenewType">Renewal Type:</label>
+                    <label htmlFor="editRenewType">Renewal Type:</label>
                     <select
                         className={styles.editInput}
                         id="editRenewType"
@@ -96,7 +96,7 @@ function PaymentItem( { payment, onPaymentDeleted, onPaymentUpdated } ) {
                     </select>                    
                 </div>
                 <div className={styles.editItem}>
-                    <label for="editPaymentDate">Payment Date:</label>
+                    <label htmlFor="editPaymentDate">Start Date:</label>
                     <input
                         className={styles.editInput}
                         id="editPaymentDate"
@@ -108,7 +108,7 @@ function PaymentItem( { payment, onPaymentDeleted, onPaymentUpdated } ) {
                 </div>
                 {renewType === 'fixed' && (
                     <div className={styles.editItem}>
-                        <label for="editPaymentFrequency">Frequency:</label>
+                        <label htmlFor="editPaymentFrequency">Frequency:</label>
                         <input
                             className={styles.editInput}
                             id="editPaymentFrequency"
