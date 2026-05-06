@@ -9,25 +9,26 @@
     align-items: center;
 }
 
-.payment_form_header {
+.paymentFormHeader {
     font-weight: bold;
 }
 
-.payment_form {
+.paymentForm {
     display: flex;
 }
 
-.form_input {
+.formInput {
     border: transparent;
     border-radius: 2px;
     border-bottom: 2px solid var(--border);
 }
 
-.submit_button {
+.submitButton {
     border: 1px solid var(--text);
     border-radius: 4px;
 }
 
-.submit_button:hover {
+.submitButton:hover {
+    cursor: pointer;
     transition: background-color 0.2s;
 }

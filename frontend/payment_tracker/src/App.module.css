@@ -13,9 +13,23 @@
     overflow: hidden;
 }
 
-.logoutContainer {
-    margin-right: 2rem;
-    margin-left: auto;
+.spacer {
+    flex: 1;
+}
+
+.logoutButton {
+    color: var(--text);
+    border:transparent;
+    background-color: transparent;
+    font: var(--sans);
+    padding: 1.5rem;
+}
+
+.logoutButton:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    background-color: var(--accent-bg);
+    transition: background-color 0.2s, transform 0.2s;  
 }
 
 .navLink {
@@ -29,4 +43,39 @@
     transform: scale(1.2);
     background-color: var(--accent-bg);
     transition: background-color 0.2s, transform 0.2s;  
+}
+
+.siteHeader {
+    text-shadow: 3px 3px 6px black;
+}
+
+.loginRegisterContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.loginContainer, .registerContainer {
+    background-color: var(--code-bg);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 12px;
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginButton, .registerButton {
+    font-family: var(--sans);
+    margin: 12px;
+    border-radius: 8px;
+    padding: 0.5rem 0.25rem;
+    width: 5rem;
+}
+
+.loginButton:hover, .registerButton:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    background-color: var(--accent-bg);
+    transition: background-color 0.2s, transform 0.2s;
 }

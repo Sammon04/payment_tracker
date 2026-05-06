@@ -11,14 +11,16 @@ function Home() {
 
   return (
     <div>
-      <h1>Sam's Payment Tracker</h1>
-      <div>
-        <p>Click here to log in:</p>
-        <button onClick={() => navigate("/login")}>Login</button>
-      </div>
-      <div>
-        <p>Need an account? Click here to register:</p>
-        <button onClick={() => navigate("/register")}>Register</button>
+      <h1 className={styles.siteHeader}>Sam's Payment Tracker</h1>
+      <div className={styles.loginRegisterContainer}>
+        <div className={styles.loginContainer}>
+          <p className={styles.loginHeader}>Click here to log in:</p>
+          <button className={styles.loginButton} onClick={() => navigate("/login")}>Login</button>
+        </div>
+        <div className={styles.registerContainer}>
+          <p className={styles.registerHeader}>Need an account? Click here to register:</p>
+          <button className={styles.registerButton} onClick={() => navigate("/register")}>Register</button>
+        </div>        
       </div>
     </div>
   )
@@ -43,8 +45,9 @@ function App() {
             <Link className={styles.navLink} to="/dashboard">Dashboard</Link>
           </div>
         </div>
-        <div className={styles.logoutContainer}>
-          <Logout />
+        <div className={styles.spacer} />
+        <div className={`${styles.navItem} ${styles.logoutContainer}`}>
+          <Logout className={styles.logoutButton}/>
         </div>
       </nav>
       <Routes>

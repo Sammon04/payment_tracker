@@ -45,12 +45,12 @@ function AddPayment( { onPaymentAdded }) {
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.payment_form_header}>Add Payment</h2>
-            <form className={styles.payment_form} onSubmit={handleSubmit}>
-                <div className={styles.form_item}>
+            <h2 className={styles.paymentFormHeader}>Add Payment</h2>
+            <form className={styles.paymentForm} onSubmit={handleSubmit}>
+                <div className={styles.formItem}>
                     <label htmlFor="paymentName">Payment Name:</label>
                     <input
-                        className={styles.form_input}
+                        className={styles.formInput}
                         id="paymentName"
                         type="text"
                         placeholder="Payment Name"
@@ -58,10 +58,10 @@ function AddPayment( { onPaymentAdded }) {
                         onChange={(e) => setPaymentName(e.target.value)}
                     />
                 </div>
-                <div className={styles.form_item}>
+                <div className={styles.formItem}>
                     <label htmlFor="paymentAmount">Payment Amount:</label>
                     <input
-                        className={styles.form_input}
+                        className={styles.formInput}
                         id="paymentAmount"
                         type="number"
                         placeholder="Payment Amount"
@@ -69,10 +69,10 @@ function AddPayment( { onPaymentAdded }) {
                         onChange={(e) => setAmount(e.target.value)}
                     />                    
                 </div>
-                <div className={styles.form_item}>
+                <div className={styles.formItem}>
                     <label htmlFor="renewType">Renewal Type:</label>
                     <select 
-                        className={styles.form_input}
+                        className={styles.formInput}
                         id="renewType"
                         value={renewType} 
                         onChange={e => setRenewType(e.target.value)}>
@@ -81,10 +81,10 @@ function AddPayment( { onPaymentAdded }) {
                         <option value="fixed">Fixed (days)</option>
                     </select>                     
                 </div>
-                <div className={styles.form_item}>
+                <div className={styles.formItem}>
                     <label htmlFor="paymentDate">Start Date:</label>              
                     <input
-                        className={styles.form_input}
+                        className={styles.formInput}
                         id="paymentDate"
                         type="date"
                         placeholder="Next Payment Date"
@@ -93,10 +93,10 @@ function AddPayment( { onPaymentAdded }) {
                     />                    
                 </div>
                 {renewType === 'fixed' && (
-                    <div className={styles.form_item}>
+                    <div className={styles.formItem}>
                         <label htmlFor="paymentFrequency">Payment Frequency:</label>
                         <input
-                            className={styles.form_input}
+                            className={styles.formInput}
                             id="paymentFrequency"
                             type="number"
                             placeholder="Payment Frequency"
@@ -107,7 +107,7 @@ function AddPayment( { onPaymentAdded }) {
 
                 )}
                 <button 
-                    className={styles.submit_button}
+                    className={styles.submitButton}
                     type="submit">Add Payment</button>
             </form>
         </div>     

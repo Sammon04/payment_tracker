@@ -48,6 +48,7 @@
 }
 
 .editButton:hover, .deleteButton:hover, .saveButton:hover, .cancelButton:hover {
+    cursor: pointer;
     transition: background-color 0.2s;
 }
 

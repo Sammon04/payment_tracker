@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-function Logout() {
+function Logout( {className }) {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
@@ -20,8 +20,8 @@ function Logout() {
     };
 
     return (
-        <button onClick={handleLogout}>
-            Log out
+        <button className={className} onClick={handleLogout}>
+            Logout
         </button>
     );
 }

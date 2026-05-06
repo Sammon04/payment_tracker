@@ -1,4 +1,4 @@
-.totals_section {
+.totalsSection {
     display: flex;
     justify-content: space-evenly;
     border: 2px solid var(--border);
@@ -7,18 +7,18 @@
     background-color: var(--social-bg);
 }
 
-.dashboard_divider {
+.dashboardDivider {
     border: 2px solid var(--border);
     margin: 2rem;
 }
 
-.total_container {
+.totalContainer {
     display: flex;
     justify-content: left;
     align-items: center;
     gap: 2rem;
 }
 
-.total_value {
+.totalValue {
     scale: 120%;
 }

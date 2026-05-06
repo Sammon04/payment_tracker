@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./Register.module.css";
 
 function Register() {
     const [email, setEmail] = useState("");
@@ -26,24 +27,24 @@ function Register() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Register</h2>
-
+        <form className={styles.registerForm} onSubmit={handleSubmit}>
+            <h1 className={styles.registerHeader}>Register</h1>
             <input
+                className={styles.registerInput}
                 type="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
-
             <input
+                className={styles.registerInput}
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
 
-            <button type="submit">Register</button>
+            <button className={styles.registerButton} type="submit">Register</button>
         </form>
     );
 }
