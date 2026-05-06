@@ -54,7 +54,11 @@ switch ($_SERVER['REQUEST_METHOD']){
         $frequency = $data['frequency'] ?? null;
 
         if ($payment_name === null || $amount === null || $renew_date === null) {
-            send_response(['error' => 'Missing payment info'], 400);
+            send_response(['error' => 'Missing payment information'], 400);
+        }
+
+        if ($payment_name === "" || $amount === "" || $renew_date === "") {
+            send_response(['error' => 'Missing payment information'], 400);
         }
 
         $valid_types = ['yearly', 'monthly', 'fixed'];
@@ -71,7 +75,7 @@ switch ($_SERVER['REQUEST_METHOD']){
         }
 
         if (!validateDate($renew_date)) {
-            send_response(['error' => 'Invalid date'], 400);
+            send_response(['error' => 'Invalid payment date format'], 400);
         }
 
         try {
@@ -110,6 +114,10 @@ switch ($_SERVER['REQUEST_METHOD']){
         $frequency = $data['frequency'] ?? null;
 
         if ($payment_id === null || $payment_name === null || $amount === null || $renew_date === null) {
+            send_response(['error' => 'Missing payment info'], 400);
+        }
+
+        if ($payment_id === "" || $payment_name === "" || $amount === "" || $renew_date === "") {
             send_response(['error' => 'Missing payment info'], 400);
         }
 

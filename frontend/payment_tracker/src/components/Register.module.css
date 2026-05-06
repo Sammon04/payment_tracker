@@ -19,6 +19,10 @@
     border: 3px solid var(--accent-border);
 }
 
+.registerInput:invalid {
+    border-color: var(--error);
+}
+
 .registerButton {
     padding: 0.25rem 1rem;
     background-color: var(--accent-bg);
@@ -27,7 +31,8 @@
     transition: transform 0.2s ease
 }
 
-.registerButton:hover {
+.registerButton:hover, .registerButton:focus {
+    outline: none;
     cursor: pointer;
     transform: scale(1.2);
 }

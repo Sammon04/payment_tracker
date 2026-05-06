@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from './PaymentItem.module.css';
 
 function PaymentItem( { payment, onPaymentDeleted, onPaymentUpdated } ) {
+    const [error, setError] = useState(null);
     const [editing, setEditing] = useState(false);
     const [paymentName, setPaymentName] = useState(payment.payment_name);
     const [amount, setAmount] = useState(payment.amount);
@@ -10,6 +11,7 @@ function PaymentItem( { payment, onPaymentDeleted, onPaymentUpdated } ) {
     const [frequency, setFrequency] = useState(payment.frequency);
 
     const handleDelete = async () => {
+        setError(null);
         const res = await fetch("/api/payments/payments.php", {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
@@ -26,6 +28,7 @@ function PaymentItem( { payment, onPaymentDeleted, onPaymentUpdated } ) {
     };
 
     const handleCancel = () => {
+        setError(null);
         setPaymentName(payment.payment_name);
         setAmount(payment.amount);
         setRenewDate(payment.renew_date);
@@ -35,6 +38,8 @@ function PaymentItem( { payment, onPaymentDeleted, onPaymentUpdated } ) {
     };
 
     const handleSubmit = async () => {
+        setError(null);
+
         const res = await fetch("/api/payments/payments.php", {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -49,18 +54,21 @@ function PaymentItem( { payment, onPaymentDeleted, onPaymentUpdated } ) {
             credentials: "include",
         });
 
-        if (res.ok) {
-            setEditing(false);
-            onPaymentUpdated();
-        } else {
-            const err = await res.json();
-            console.error("Update failure:", err);  
+        const data = await res.json();
+
+        if (!res.ok || data.error) {
+            setError(data.error ?? "Something went wrong");
+            return;
         }
+
+        setEditing(false);
+        onPaymentUpdated();
     }
 
     if (editing) {
         return (
             <div className={styles.container}>
+                {error && <p className={styles.editError}>{error}</p>}
                 <div className={styles.editItem}>
                     <label htmlFor="editPaymentName">Payment Name:</label>
                     <input

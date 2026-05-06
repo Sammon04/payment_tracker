@@ -38,4 +38,7 @@ try {
     echo $e;
 }
 
-echo "Done. " . $result->num_rows . " payment(s) updated.";
+send_response([
+    'success' => true,
+    'payments updated' => $result->num_rows
+]);

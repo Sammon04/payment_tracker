@@ -9,8 +9,12 @@ $data = get_json();
 $email = $data['email'] ?? null;
 $password = $data['password'] ?? null;
 
-if ($email === null || $password === null) {
+if ($email === null || $email === "" || $password === null || $password === "") {
     send_response(['error' => 'Missing login data'], 400);
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    send_response(['error' => 'Invalid email address'], 400);
 }
 
 try {

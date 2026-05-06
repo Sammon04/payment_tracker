@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Register.module.css";
 
 function Register() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
+        setError(null);
         e.preventDefault();
 
         const res = await fetch("/api/users/register.php", {
@@ -17,18 +21,20 @@ function Register() {
             credentials: "include",
         });
 
-        if (!res.ok) {
-            console.error("Request failed:", res.status);
+        const data = await res.json();
+
+        if (!res.ok || data.error) {
+            setError(data.error ?? "Something went wrong");
             return;
         }
         
-        const data = await res.json();
-        console.log(data);
+        navigate("/login");
     };
 
     return (
         <form className={styles.registerForm} onSubmit={handleSubmit}>
             <h1 className={styles.registerHeader}>Register</h1>
+            {error && <p className={styles.registerError}>{error}</p>}
             <input
                 className={styles.registerInput}
                 type="email"

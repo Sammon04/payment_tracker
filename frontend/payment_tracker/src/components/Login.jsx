@@ -6,8 +6,10 @@ function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
+        setError(null);
         e.preventDefault();
 
         const res = await fetch("/api/users/login.php", {
@@ -19,20 +21,21 @@ function Login() {
             credentials: "include",
         });
 
-        if (!res.ok) {
-            console.error("Request failed:", res.status);
+        const data = await res.json();
+
+        if (!res.ok || data.error) {
+            setError(data.error ?? "Something went wrong");
             return;
         }
 
-        const data = await res.json();
-        if (data.success) {
-            navigate("/dashboard");
-        }
+        navigate("/dashboard");
+
     };
 
     return (
         <form className={styles.loginForm} onSubmit={handleSubmit}>
             <h1 className={styles.loginHeader}>Login</h1>
+            {error && <p className={styles.loginError}>{error}</p>}
             <input
                 className={styles.loginInput}
                 type="email"

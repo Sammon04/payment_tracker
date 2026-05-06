@@ -7,7 +7,7 @@ $data = get_json();
 $email = $data['email'] ?? null;
 $password = $data['password'] ?? null;
 
-if ($email === null || $password === null) {
+if ($email === null || $email === "" || $password === null || $password === "") {
     send_response(['error' => 'Missing user data'], 400);
 }
 
