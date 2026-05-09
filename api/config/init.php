@@ -10,7 +10,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-require_once __DIR__ . "/../database.php";
+require_once __DIR__ . "/../db_config.php";
+
+$db = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 

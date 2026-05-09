@@ -1,12 +1,26 @@
-.container {
+.paymentContainer {
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 1rem 1.25rem;
     margin: 0.75rem;
     background-color: var(--code-bg);
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
+}
+
+.infoContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.paymentDivider {
+    width: 100%;
+    border: 2px solid var(--border);
+    margin: 1rem;
 }
 
 .detail {

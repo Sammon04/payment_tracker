@@ -137,35 +137,46 @@ function PaymentItem( { payment, onPaymentDeleted, onPaymentUpdated } ) {
     }
 
     return (
-        <div className={styles.container}>
-            <h3 className={styles.name}>{payment.payment_name}</h3>
-            <div className={styles.detail}>
-                <p className={styles.detailLabel}>Amount</p>
-                <p className={styles.detailValue}>${payment.amount}</p>
+        <div className={styles.paymentContainer}>
+            <div className={styles.infoContainer}>
+                <h3 className={styles.name}>{payment.payment_name}</h3>
+                <div className={styles.detail}>
+                    <p className={styles.detailLabel}>Amount</p>
+                    <p className={styles.detailValue}>${payment.amount}</p>
+                </div>
+                <div className={styles.detail}>
+                    <p className={styles.detailLabel}>Due Date</p>
+                    <p className={styles.detailValue}>{payment.renew_date}</p>
+                </div>
+                
+                <div className={styles.detail}>
+                    <p className={styles.detailLabel}>Renewed</p>
+                    {payment.renew_type !== 'fixed' && (
+                        <p className={styles.detailValue}>{payment.renew_type}</p>
+                    )}
+                    {payment.renew_type === 'fixed' && (
+                        <p className={styles.detailValue}>Every {payment.frequency} days</p>
+                    )}
+                </div>
+                <div className={styles.detail}>
+                    <p className={styles.detailLabel}>Total Paid</p>
+                    <p className={styles.detailValue}>${payment.total_paid}</p>
+                </div>
+                
+                <div className={styles.actions}>
+                    <button className={styles.editButton} onClick={() => setEditing(true)}>Edit</button>
+                    <button className={styles.deleteButton} onClick={handleDelete}>Delete</button>
+                </div>                
             </div>
-            <div className={styles.detail}>
-                <p className={styles.detailLabel}>Due Date</p>
-                <p className={styles.detailValue}>{payment.renew_date}</p>
-            </div>
-            
-            <div className={styles.detail}>
-                <p className={styles.detailLabel}>Renewed</p>
-                {payment.renew_type !== 'fixed' && (
-                    <p className={styles.detailValue}>{payment.renew_type}</p>
-                )}
-                {payment.renew_type === 'fixed' && (
-                    <p className={styles.detailValue}>Every {payment.frequency} days</p>
-                )}
-            </div>
-            <div className={styles.detail}>
-                <p className={styles.detailLabel}>Total Paid</p>
-                <p className={styles.detailValue}>${payment.total_paid}</p>
-            </div>
-            
-            <div className={styles.actions}>
-                <button className={styles.editButton} onClick={() => setEditing(true)}>Edit</button>
-                <button className={styles.deleteButton} onClick={handleDelete}>Delete</button>
-            </div>
+            {payment.reminder != null && (
+                <hr className={styles.paymentDivider}/>
+            )}
+            {payment.reminder != null && (
+                <div className={styles.reminderContainer}>
+                        <p>Reminder:</p>
+                </div>                
+            )}
+
         </div>
     );
 }
